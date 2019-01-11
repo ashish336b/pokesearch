@@ -14,7 +14,7 @@ export default class App extends React.Component {
   renderScreen = () => {
     if(this.state.currentscreen === "Landing"){
       return(
-        <Landing />
+        <Landing switchScreen={this.switchScreen}/>
       )
     }else if(this.state.currentscreen === "Search"){
       return(

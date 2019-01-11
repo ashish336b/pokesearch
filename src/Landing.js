@@ -13,9 +13,7 @@ class Landing extends React.Component {
                         icon={{ name: 'search', type: 'font-awesome' }}
                         title='Search Pokemon'
                         backgroundColor = '#4264bf'
-                        onPress={() => {
-                            alert("you are good");
-                        }}
+                        onPress={() => {this.props.switchScreen("Search")}}
                     />
                 </View>
             </ImageBackground>
