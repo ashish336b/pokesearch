@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { ImageBackground, Platform, StyleSheet, Text, View } from 'react-native';
 import { Header, Button, Icon, Item, Input, } from 'native-base';
+import axios from 'axios';
 // Import files for src
 import PokeLoader from './Pokeloader';
 import Searchbody from './Searchbody';
@@ -9,10 +10,21 @@ import Searchbody from './Searchbody';
 class Search extends React.Component {
     state = {
         pokeSearch: "",
-        onCall:true
+        onCall:true,
+        data:{}
     }
     searchPoke = ()=>{
-        alert("search");
+        this.setState({onCall:true});
+        var self = this;
+        axios.get("https://pokeapi.co/api/v2/pokemon/"+this.state.pokeSearch.toLowerCase())
+        .then(function(response){
+            console.log(response.data);
+            self.setState({data: response.data});
+            self.setState({onCall:false});
+        })
+        .catch(function(error){
+            console.log(error);
+        })
     }
     renderBody = ()=>{
         if(this.state.onCall){
@@ -21,7 +33,7 @@ class Search extends React.Component {
             )
         }else{
             return(
-                <Searchbody/>
+                <Searchbody data={this.state.data}/>
             )
         }
     }

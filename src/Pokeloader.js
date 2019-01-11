@@ -1,10 +1,10 @@
 import React from 'react';
-import {View,Text} from 'react-native';
-class PokeLoader extends React.Component{
-    render(){
-        return(
+import { View, Text, Image } from 'react-native';
+class PokeLoader extends React.Component {
+    render() {
+        return (
             <View>
-                <Text>We are loading</Text>
+                <Text>This is loading</Text>
             </View>
         )
     }
