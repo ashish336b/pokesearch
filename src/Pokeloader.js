@@ -1,12 +1,15 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
-class PokeLoader extends React.Component {
+class Pokeloader extends React.Component {
     render() {
         return (
             <View>
-                <Text>This is loading</Text>
+                <Image
+                    style={{ width: 400, height: 400,justifyContent:'center',alignItems:'center' }}
+                    source={require('../assets/icons/Pikacu.gif')}
+                />
             </View>
         )
     }
 }
-export default PokeLoader;
+export default Pokeloader;

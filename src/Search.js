@@ -16,11 +16,10 @@ class Search extends React.Component {
     searchPoke = ()=>{
         this.setState({onCall:true});
         var self = this;
-        axios.get("https://pokeapi.co/api/v2/pokemon/"+this.state.pokeSearch.toLowerCase())
+        axios.get("http://pokeapi.co/api/v2/pokemon/"+this.state.pokeSearch.toLowerCase()+"/")
         .then(function(response){
-            console.log(response.data);
             self.setState({data: response.data});
-            self.setState({onCall:false});
+            self.setState({onCall: false});
         })
         .catch(function(error){
             console.log(error);
