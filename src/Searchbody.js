@@ -32,7 +32,7 @@ class Searchbody extends React.Component {
                         </ListItem>
                         <ListItem itemDivider>
                             <Text style={{ fontWeight: 'bold' }}>Abilities</Text>
-                        </ListItem>
+                        </ListItem> 
                         <List
                             dataArray={pokemon.abilities}
                             renderRow={(item) =>
