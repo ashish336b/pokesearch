@@ -6,7 +6,7 @@ import Search from './src/Search';
 var myBackground = require("./assets/icons/landing.jpg");
 export default class App extends React.Component {
   state = {
-    currentscreen: "Search"
+    currentscreen: "Landing"
   }
   switchScreen = (currentscreen)=>{
       this.setState({currentscreen})

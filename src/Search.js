@@ -10,29 +10,33 @@ import Searchbody from './Searchbody';
 class Search extends React.Component {
     state = {
         pokeSearch: "",
-        onCall:true,
-        data:{}
+        onCall: true,
+        data: {}
     }
-    searchPoke = ()=>{
-        this.setState({onCall:true});
+    searchPoke = () => {
+        this.setState({ onCall: true });
         var self = this;
+        axios.defaults.headers = {
+            'Content-Type': 'application/json',
+        }
         axios.get("http://pokeapi.co/api/v2/pokemon/"+this.state.pokeSearch.toLowerCase()+"/")
-        .then(function(response){
-            self.setState({data: response.data});
-            self.setState({onCall: false});
-        })
-        .catch(function(error){
-            console.log(error);
-        })
+            .then(function (response) {
+                console.log(response.data);
+                self.setState({ data: response.data });
+                self.setState({ onCall: false });
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
     }
-    renderBody = ()=>{
-        if(this.state.onCall){
-            return(
-                <PokeLoader/>
+    renderBody = () => {
+        if (this.state.onCall) {
+            return (
+                <PokeLoader />
             )
-        }else{
-            return(
-                <Searchbody data={this.state.data}/>
+        } else {
+            return (
+                <Searchbody data={this.state.data} />
             )
         }
     }
@@ -43,14 +47,14 @@ class Search extends React.Component {
                     searchBar
                     rounded
                 >
-                <Item>
-                    <Icon name="search" onPress={this.searchPoke}/>
-                    <Input
-                    value={this.state.pokeSearch}
-                    placeholder="search Pokemon"
-                    onChangeText={(pokeSearch)=>this.setState({pokeSearch})}
-                />
-                </Item>
+                    <Item>
+                        <Icon name="search" onPress={this.searchPoke} />
+                        <Input
+                            value={this.state.pokeSearch}
+                            placeholder="search Pokemon"
+                            onChangeText={(pokeSearch) => this.setState({ pokeSearch })}
+                        />
+                    </Item>
                 </Header>
                 {this.renderBody()}
             </View>
